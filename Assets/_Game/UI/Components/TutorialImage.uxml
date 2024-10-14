@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/_Game/UI/Tutorialmage.uss?fileID=7433441132597879392&amp;guid=4ac45f51c953f184582feb01b921c70a&amp;type=3#Tutorialmage" />
+    <ui:VisualElement name="TutorialImage" class="tutorial-image" style="flex-basis: auto; width: 300px; height: 300px;" />
+</ui:UXML>

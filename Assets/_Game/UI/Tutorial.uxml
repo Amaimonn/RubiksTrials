@@ -1,0 +1,34 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="Stage1" src="project://database/Assets/_Game/UI/TutorialPages/Stage1.uxml?fileID=9197481963319205126&amp;guid=f800f2af929aa404ca217f5ba79eb6e5&amp;type=3#Stage1" />
+    <Style src="project://database/Assets/_Game/UI/Styles/TutorialStyled.uss?fileID=7433441132597879392&amp;guid=865952da9a072994ba4d85bfd7e6e4cd&amp;type=3#TutorialStyled" />
+    <Style src="project://database/Assets/_Game/UI/Styles/TutorialTabStyled.uss?fileID=7433441132597879392&amp;guid=5d8df8f66ac530e489636892aaf49444&amp;type=3#TutorialTabStyled" />
+    <Style src="project://database/Assets/_Game/UI/Styles/TutorialItem.uss?fileID=7433441132597879392&amp;guid=6ba26dd4702f97348918746c2e530b0c&amp;type=3#TutorialItem" />
+    <Style src="project://database/Assets/_Game/UI/Styles/Tutorialmage.uss?fileID=7433441132597879392&amp;guid=4ac45f51c953f184582feb01b921c70a&amp;type=3#Tutorialmage" />
+    <Style src="project://database/Assets/_Game/UI/Styles/ScrollViewContent.uss?fileID=7433441132597879392&amp;guid=f0f714fd1c081a248a30d53a8cae8dd8&amp;type=3#ScrollViewContent" />
+    <ui:VisualElement name="panel-container" class="tutorial__body" style="display: none;">
+        <ui:VisualElement name="menu-panel" class="tutorial-panel">
+            <ui:Label tabindex="-1" text="Помощь" display-tooltip-when-elided="true" name="menu__label" class="tutorial__label" />
+            <ui:Button text="х" display-tooltip-when-elided="true" name="menu-exit-button" class="tutorial-exit__button" style="background-image: url(&quot;project://database/Assets/_Game/Images/panel_smooth_edges%201.png?fileID=2800000&amp;guid=19ddb65e4821d0e41aa8b4b97cfe78d2&amp;type=3#panel_smooth_edges 1&quot;);" />
+            <ui:VisualElement name="horizontal-layout-container" class="horizontal-layout">
+                <ui:VisualElement name="tab-content-container" class="tab-content-container">
+                    <ui:ScrollView scroll-deceleration-rate="0,135" elasticity="0,1" touch-scroll-type="Clamped" name="tutorial-scroll-view" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" nested-interaction-kind="StopScrolling" class="tutorial__scrollview" style="position: relative;">
+                        <ui:Instance template="Stage1" />
+                        <ui:VisualElement style="flex-grow: 1;" />
+                    </ui:ScrollView>
+                    <ui:VisualElement name="fade-footer" style="flex-grow: 1; position: absolute; bottom: 0; width: 100%; height: 5%; background-image: url(&quot;project://database/Assets/_Game/Images/white-fade-footer.png?fileID=21300000&amp;guid=7c975d5b6294cee449bd06afd58748fa&amp;type=3#white-fade-footer&quot;); -unity-background-image-tint-color: rgb(65, 65, 65); background-color: rgba(0, 0, 0, 0);" />
+                </ui:VisualElement>
+                <ui:VisualElement name="tabs-panel-container" class="tabs-panel-container">
+                    <ui:ScrollView vertical-scroller-visibility="Hidden" horizontal-scroller-visibility="Hidden" name="tabs-scroll-view" mouse-wheel-scroll-size="1000" class="tabs-scroll-view">
+                        <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" name="Label" class="tutorial-tab--selected" />
+                        <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" />
+                        <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" />
+                        <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" />
+                        <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" />
+                        <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" />
+                        <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" />
+                    </ui:ScrollView>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

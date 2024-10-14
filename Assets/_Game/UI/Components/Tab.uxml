@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="Tab" class="tutorial-tab" style="transition-property: width; transition-duration: 0.2s;">
+        <ui:Label tabindex="-1" text="Label" display-tooltip-when-elided="true" />
+    </ui:VisualElement>
+</ui:UXML>

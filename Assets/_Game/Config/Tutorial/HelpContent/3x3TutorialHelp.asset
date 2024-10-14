@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 067dd598b27bfbd419e5fa3e44751ad3, type: 3}
+  m_Name: 3x3TutorialHelp
+  m_EditorClassIdentifier: 
+  _tabsData:
+  - {fileID: 11400000, guid: 6422917a2626ba84da23c5dc5dc20907, type: 2}
+  - {fileID: 11400000, guid: 97d9de9c5f738a4458f80e9cb95e3e6e, type: 2}
+  - {fileID: 11400000, guid: ed5de23d9a12a7a4a831e68c336fb379, type: 2}
+  - {fileID: 11400000, guid: 531dfea0b2d67924d8b62e7e6b264d8a, type: 2}
+  - {fileID: 11400000, guid: d1cbb5708f56d1140958a98bd04c5226, type: 2}
+  - {fileID: 11400000, guid: 3a13ccd63593ce94baff1726998057c1, type: 2}
+  - {fileID: 11400000, guid: 626374d3e145b6a46b675473465ff961, type: 2}

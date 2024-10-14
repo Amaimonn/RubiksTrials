@@ -1,0 +1,4 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/_Game/UI/Styles/ScrollViewContent.uss?fileID=7433441132597879392&amp;guid=f0f714fd1c081a248a30d53a8cae8dd8&amp;type=3#ScrollViewContent" />
+    <ui:VisualElement class="scrollview-content--vertical" style="flex-grow: 1; font-size: 30px;" />
+</ui:UXML>

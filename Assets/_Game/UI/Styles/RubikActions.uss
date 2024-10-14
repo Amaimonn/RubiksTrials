@@ -1,0 +1,103 @@
+.straight-arrow {
+    background-image: url("project://database/Assets/_Game/Images/Arrows/swipe_arrow.png?fileID=21300000&guid=3840095536594574d848ecd31fe92c84&type=3#swipe_arrow");
+    -unity-background-image-tint-color: rgb(172, 120, 214);
+    align-items: stretch;
+    width: 84%;
+    height: 40%;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.straight-arrow--bottom-to-right {
+    position: absolute;
+    bottom: -4%;
+    left: 5%;
+}
+
+.straight-arrow--bottom-to-left {
+    position: absolute;
+    bottom: -4%;
+    left: 5%;
+    scale: -1 1;
+}
+
+.straight-arrow--top-to-right {
+    position: absolute;
+    left: 5%;
+    top: 3%;
+}
+
+.straight-arrow--top-to-left {
+    position: absolute;
+    left: 5%;
+    scale: -1 1;
+    top: 3%;
+}
+
+.straight-arrow--east-to-up {
+    position: absolute;
+    top: 34%;
+    rotate: -90deg;
+    right: -19%;
+}
+
+.straight-arrow--east-to-down {
+    position: absolute;
+    top: 34%;
+    rotate: 90deg;
+    right: -19%;
+}
+
+.straight-arrow--west-to-up {
+    position: absolute;
+    top: 34%;
+    rotate: -90deg;
+    left: -26%;
+}
+
+.straight-arrow--west-to-down {
+    position: absolute;
+    top: 34%;
+    rotate: 90deg;
+    left: -26%;
+}
+
+.round-arrow {
+    width: 84%;
+    height: 45%;
+    background-image: url("project://database/Assets/_Game/Images/Arrows/round_swipe_arrow.png?fileID=21300000&guid=172a8cbe00bf4db438f9f215cc887c18&type=3#round_swipe_arrow");
+    -unity-background-image-tint-color: rgb(172, 120, 214);
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.round-arrow-clockwise {
+    position: absolute;
+    top: 20%;
+    left: 7%;
+    scale: -1 1;
+}
+
+.round-arrow--counter-clockwise {
+    position: absolute;
+    top: 20%;
+    left: 1%;
+}
+
+.move-arrow {
+    background-image: url("project://database/Assets/_Game/Images/Arrows/ArrowButton.psd?fileID=2800000&guid=3396da524e32a7f42b46f9f31cf5e037&type=3#ArrowButton");
+    -unity-background-image-tint-color: rgb(255, 172, 18);
+    flex-grow: 1;
+    margin-top: 4px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    margin-left: 4px;
+}
+
+.repeat-action-text {
+    align-self: center;
+    background-image: none;
+    -unity-text-align: middle-center;
+    -unity-font-style: bold;
+    white-space: pre-wrap;
+    font-size: 16px;
+    color: rgb(27, 27, 27);
+}

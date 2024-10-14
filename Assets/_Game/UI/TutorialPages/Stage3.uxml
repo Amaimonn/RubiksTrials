@@ -1,0 +1,72 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="BottomToLeft" src="project://database/Assets/_Game/UI/Components/RubikActions/BottomToLeft.uxml?fileID=9197481963319205126&amp;guid=bafab8cc47fd52845b3dc507e9ba91f5&amp;type=3#BottomToLeft" />
+    <ui:Template name="EastToDown" src="project://database/Assets/_Game/UI/Components/RubikActions/EastToDown.uxml?fileID=9197481963319205126&amp;guid=ac387a81df5f1db489aea82a3acaee6f&amp;type=3#EastToDown" />
+    <ui:Template name="BottomToRight" src="project://database/Assets/_Game/UI/Components/RubikActions/BottomToRight.uxml?fileID=9197481963319205126&amp;guid=45bf1aa00c37d55488f460978c3cd07a&amp;type=3#BottomToRight" />
+    <ui:Template name="EastToUp" src="project://database/Assets/_Game/UI/Components/RubikActions/EastToUp.uxml?fileID=9197481963319205126&amp;guid=3259b5c67c32f5a458c46996ad3a2427&amp;type=3#EastToUp" />
+    <ui:Template name="Clockwise" src="project://database/Assets/_Game/UI/Components/RubikActions/Clockwise.uxml?fileID=9197481963319205126&amp;guid=641d6bc2e5775b64bb3186abf3d7c025&amp;type=3#Clockwise" />
+    <ui:Template name="Counterclockwise" src="project://database/Assets/_Game/UI/Components/RubikActions/Counterclockwise.uxml?fileID=9197481963319205126&amp;guid=1ffa8049fe557bc4a9d2756916891c57&amp;type=3#Counterclockwise" />
+    <ui:Template name="TopToLeft" src="project://database/Assets/_Game/UI/Components/RubikActions/TopToLeft.uxml?fileID=9197481963319205126&amp;guid=3dc1b141b52c4ff41ae580b7a3297b5f&amp;type=3#TopToLeft" />
+    <ui:Template name="TopToRight" src="project://database/Assets/_Game/UI/Components/RubikActions/TopToRight.uxml?fileID=9197481963319205126&amp;guid=bcf323bb75a091e48b6130defb719016&amp;type=3#TopToRight" />
+    <Style src="project://database/Assets/_Game/UI/Styles/ScrollViewContent.uss?fileID=7433441132597879392&amp;guid=f0f714fd1c081a248a30d53a8cae8dd8&amp;type=3#ScrollViewContent" />
+    <Style src="project://database/Assets/_Game/UI/Styles/Tutorialmage.uss?fileID=7433441132597879392&amp;guid=4ac45f51c953f184582feb01b921c70a&amp;type=3#Tutorialmage" />
+    <Style src="project://database/Assets/_Game/UI/Styles/RubikActions.uss?fileID=7433441132597879392&amp;guid=2440e1cb767694a47bfdaeb42c26ece3&amp;type=3#RubikActions" />
+    <ui:VisualElement name="content-container" class="scrollview-content--vertical">
+        <ui:Label tabindex="-1" text="Этап №3" display-tooltip-when-elided="true" name="h1" style="display: flex;" />
+        <ui:VisualElement name="states-transition-container" class="states-transition-container">
+            <ui:VisualElement name="state-container" class="state-container">
+                <ColorReplacer fill-colors="#FF1814FF,#FF1814FF,#FF1814FF,#FF1814FF,#FF1814FF,#FF1814FF,#FF1814FF,#FF1814FF,#FF1814FF,#3B50F9FF,#3B50F9FF,#3B50F9FF,#606060FF,#3B50F9FF,#606060FF,#606060FF,#606060FF,#606060FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#606060FF,#FFFFF9FF,#606060FF,#606060FF,#606060FF,#606060FF" box-sizing="true" class="state__image" style="scale: 1 -1;" />
+                <ui:Label tabindex="-1" text="Собран один слой&#10;" name="state__label" class="state__label" />
+            </ui:VisualElement>
+            <ui:VisualElement name="transition-arrow" class="transition-arrow" />
+            <ui:VisualElement name="state-container" class="state-container">
+                <ColorReplacer fill-colors="#FF1814FF,#FF1814FF,#FF1814FF,#FF1814FF,#FF1814FF,#FF1814FF,#FF1814FF,#FF1814FF,#FF1814FF,#3B50F9FF,#3B50F9FF,#3B50F9FF,#3B50F9FF,#3B50F9FF,#3B50F9FF,#606060FF,#606060FF,#606060FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#606060FF,#606060FF,#606060FF" box-sizing="true" class="state__image" style="scale: 1 -1;" />
+                <ui:Label tabindex="-1" text="Собраны два слоя" display-tooltip-when-elided="true" name="state__label" class="state__label" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Label text="Куб перевернули вверх дном." name="p" class="content__paragraph" />
+        <ui:Label text="В зависимости от расположения цветов есть несколько схем для сборки:" name="schemes-description" class="content__paragraph" />
+        <ui:VisualElement name="schemes-container" class="schemes-container">
+            <ui:VisualElement name="scheme" class="scheme" style="align-self: auto; display: none;">
+                <ColorReplacer fill-colors="#606060FF,#606060FF,#606060FF,#606060FF,#606060FF,#606060FF,#606060FF,#3B50F9FF,#606060FF,#606060FF,#FFFFF9FF,#606060FF,#606060FF,#FFFFF9FF,#606060FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#606060FF,#606060FF,#606060FF,#606060FF,#3B50F9FF,#606060FF,#3B50F9FF,#3B50F9FF,#3B50F9FF" box-sizing="true" class="state__image" style="rotate: 180deg; scale: -1 1;" />
+                <ui:VisualElement name="actions-container" class="actions-container">
+                    <ui:Instance template="BottomToLeft" />
+                    <ui:Instance template="EastToDown" />
+                    <ui:Instance template="BottomToRight" />
+                    <ui:Instance template="EastToUp" />
+                    <ui:Instance template="BottomToRight" />
+                    <ui:Instance template="Clockwise" />
+                    <ui:Instance template="BottomToLeft" />
+                    <ui:Instance template="Counterclockwise" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="scheme" class="scheme">
+                <ColorReplacer fill-colors="#606060FF,#606060FF,#606060FF,#606060FF,#606060FF,#606060FF,#606060FF,#FFFFF9FF,#606060FF,#606060FF,#3B50F9FF,#606060FF,#606060FF,#3B50F9FF,#606060FF,#3B50F9FF,#3B50F9FF,#3B50F9FF,#606060FF,#606060FF,#606060FF,#606060FF,#FFFFF9FF,#606060FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF" box-sizing="true" class="state__image" style="scale: 1 1;" />
+                <ui:VisualElement name="actions-container" class="actions-container">
+                    <ui:Instance template="TopToLeft" />
+                    <ui:Instance template="EastToUp" />
+                    <ui:Instance template="TopToRight" />
+                    <ui:Instance template="EastToDown" />
+                    <ui:Instance template="TopToRight" />
+                    <ui:Instance template="Counterclockwise" />
+                    <ui:Instance template="TopToLeft" />
+                    <ui:Instance template="Clockwise" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="scheme" class="scheme">
+                <ColorReplacer fill-colors="#606060FF,#606060FF,#606060FF,#606060FF,#606060FF,#606060FF,#606060FF,#3B50F9FF,#606060FF,#606060FF,#FFFFF9FF,#606060FF,#606060FF,#FFFFF9FF,#606060FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#606060FF,#606060FF,#606060FF,#606060FF,#3B50F9FF,#606060FF,#3B50F9FF,#3B50F9FF,#3B50F9FF" box-sizing="true" class="state__image" style="scale: -1 1;" />
+                <ui:VisualElement name="actions-container" class="actions-container">
+                    <ui:Instance template="TopToLeft" style="scale: -1 1;" />
+                    <ui:Instance template="EastToUp" style="scale: -1 1;" />
+                    <ui:Instance template="EastToDown" style="scale: -1 1;" />
+                    <ui:Instance template="TopToRight" style="scale: -1 1;" />
+                    <ui:Instance template="TopToRight" style="scale: -1 1;" />
+                    <ui:Instance template="Counterclockwise" style="scale: -1 1;" />
+                    <ui:Instance template="TopToLeft" style="scale: -1 1;" />
+                    <ui:Instance template="Clockwise" style="scale: -1 1;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Label text="*При возникновении трудностей, можно переключиться на сборку других цветов/граней или начать этап заново. В некоторых случаях может помочь информация из других разделов." name="bottom-text" class="content__paragraph" />
+        <ui:VisualElement name="bottom-space" class="content__bottom-space" />
+    </ui:VisualElement>
+</ui:UXML>

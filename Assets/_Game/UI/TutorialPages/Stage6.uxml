@@ -1,0 +1,64 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="EastToDown" src="project://database/Assets/_Game/UI/Components/RubikActions/EastToDown.uxml?fileID=9197481963319205126&amp;guid=ac387a81df5f1db489aea82a3acaee6f&amp;type=3#EastToDown" />
+    <ui:Template name="Counterclockwise" src="project://database/Assets/_Game/UI/Components/RubikActions/Counterclockwise.uxml?fileID=9197481963319205126&amp;guid=1ffa8049fe557bc4a9d2756916891c57&amp;type=3#Counterclockwise" />
+    <ui:Template name="WestToUp" src="project://database/Assets/_Game/UI/Components/RubikActions/WestToUp.uxml?fileID=9197481963319205126&amp;guid=8f426af0cf671be49878a54504823a89&amp;type=3#WestToUp" />
+    <ui:Template name="Clockwise" src="project://database/Assets/_Game/UI/Components/RubikActions/Clockwise.uxml?fileID=9197481963319205126&amp;guid=641d6bc2e5775b64bb3186abf3d7c025&amp;type=3#Clockwise" />
+    <ui:Template name="EastToUp" src="project://database/Assets/_Game/UI/Components/RubikActions/EastToUp.uxml?fileID=9197481963319205126&amp;guid=3259b5c67c32f5a458c46996ad3a2427&amp;type=3#EastToUp" />
+    <ui:Template name="WestToDown" src="project://database/Assets/_Game/UI/Components/RubikActions/WestToDown.uxml?fileID=9197481963319205126&amp;guid=9f3bb02be98be5047ab11fb4ffb96e44&amp;type=3#WestToDown" />
+    <Style src="project://database/Assets/_Game/UI/Styles/ScrollViewContent.uss?fileID=7433441132597879392&amp;guid=f0f714fd1c081a248a30d53a8cae8dd8&amp;type=3#ScrollViewContent" />
+    <Style src="project://database/Assets/_Game/UI/Styles/Tutorialmage.uss?fileID=7433441132597879392&amp;guid=4ac45f51c953f184582feb01b921c70a&amp;type=3#Tutorialmage" />
+    <Style src="project://database/Assets/_Game/UI/Styles/RubikActions.uss?fileID=7433441132597879392&amp;guid=2440e1cb767694a47bfdaeb42c26ece3&amp;type=3#RubikActions" />
+    <ui:VisualElement name="content-container" class="scrollview-content--vertical">
+        <ui:Label tabindex="-1" text="Этап №6" name="h1" style="display: flex;" />
+        <ui:VisualElement name="states-transition-container" class="states-transition-container">
+            <ui:VisualElement name="state-container" class="state-container">
+                <ColorReplacer fill-colors="#606060FF,#FF9D18FF,#606060FF,#FF9D18FF,#FF9D18FF,#FF9D18FF,#606060FF,#FF9D18FF,#606060FF,#606060FF,#FFFFF9FF,#606060FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#606060FF,#55FF4CFF,#606060FF,#55FF4CFF,#55FF4CFF,#55FF4CFF,#55FF4CFF,#55FF4CFF,#55FF4CFF" box-sizing="true" class="state__image" />
+                <ui:Label tabindex="-1" text="Правильно собран верхний крест" name="state__label" class="state__label" />
+            </ui:VisualElement>
+            <ui:VisualElement name="transition-arrow" class="transition-arrow" />
+            <ui:VisualElement name="state-container" class="state-container">
+                <ColorReplacer fill-colors="#FFF415FF,#FF9D18FF,#FFF415FF,#FF9D18FF,#FF9D18FF,#FF9D18FF,#FFFFF9FF,#FF9D18FF,#FFFFF9FF,#3B50F9FF,#FFFFF9FF,#55FF4CFF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#FF9D18FF,#55FF4CFF,#FF9D18FF,#55FF4CFF,#55FF4CFF,#55FF4CFF,#55FF4CFF,#55FF4CFF,#55FF4CFF" box-sizing="true" class="state__image" />
+                <ui:Label tabindex="-1" text="Угловые части на своих местах (возможно, с неправильным поворотом)" display-tooltip-when-elided="true" name="state__label" class="state__label" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Label text="Теперь нужно переместить угловые части оставшегося слоя на свои места. На текущем этапе можно не обращать внимание на поворот угловых частей. Следующие схемы позволяют поменять местами 3 угловые части по/против часовой стрелки. Используйте их, чтобы добиться нужного результата:" name="schemes-description" class="content__paragraph" />
+        <ui:VisualElement name="schemes-container" class="schemes-container">
+            <ui:VisualElement name="scheme" class="scheme">
+                <ColorReplacer fill-colors="#606060FF,#606060FF,#55FF4CFF,#606060FF,#606060FF,#606060FF,#FFF415FF,#606060FF,#FF9D18FF,#55FF4CFF,#606060FF,#FFF415FF,#606060FF,#606060FF,#606060FF,#606060FF,#606060FF,#606060FF,#3B50F9FF,#606060FF,#FF9D18FF,#606060FF,#606060FF,#606060FF,#606060FF,#606060FF,#606060FF" box-sizing="true" class="state__image">
+                    <ui:VisualElement class="straight-arrow" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/_Game/Images/Arrows/swipe_arrow.png?fileID=2800000&amp;guid=3840095536594574d848ecd31fe92c84&amp;type=3#swipe_arrow&quot;); -unity-background-scale-mode: scale-to-fit; top: 3px; position: absolute; width: 100px; height: 24px; left: 32px; scale: 1.4 0.5;" />
+                    <ui:VisualElement class="straight-arrow" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/_Game/Images/Arrows/swipe_arrow.png?fileID=2800000&amp;guid=3840095536594574d848ecd31fe92c84&amp;type=3#swipe_arrow&quot;); -unity-background-scale-mode: scale-to-fit; top: 39px; position: absolute; width: 53px; height: 32px; left: 102px; rotate: -212deg;" />
+                    <ui:VisualElement class="straight-arrow" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/_Game/Images/Arrows/swipe_arrow.png?fileID=2800000&amp;guid=3840095536594574d848ecd31fe92c84&amp;type=3#swipe_arrow&quot;); -unity-background-scale-mode: scale-to-fit; top: 41px; position: absolute; width: 62px; height: 32px; left: 16px; rotate: -160deg;" />
+                </ColorReplacer>
+                <ui:VisualElement name="actions-container" class="actions-container">
+                    <ui:Instance template="EastToDown" />
+                    <ui:Instance template="Counterclockwise" />
+                    <ui:Instance template="WestToUp" />
+                    <ui:Instance template="Clockwise" />
+                    <ui:Instance template="EastToUp" />
+                    <ui:Instance template="Counterclockwise" />
+                    <ui:Instance template="WestToDown" />
+                    <ui:Instance template="Clockwise" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="scheme" class="scheme">
+                <ColorReplacer fill-colors="#606060FF,#606060FF,#55FF4CFF,#606060FF,#606060FF,#606060FF,#FFF415FF,#606060FF,#FF9D18FF,#55FF4CFF,#606060FF,#FFF415FF,#606060FF,#606060FF,#606060FF,#606060FF,#606060FF,#606060FF,#3B50F9FF,#606060FF,#FF9D18FF,#606060FF,#606060FF,#606060FF,#606060FF,#606060FF,#606060FF" box-sizing="true" class="state__image">
+                    <ui:VisualElement class="straight-arrow" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/_Game/Images/Arrows/swipe_arrow.png?fileID=2800000&amp;guid=3840095536594574d848ecd31fe92c84&amp;type=3#swipe_arrow&quot;); -unity-background-scale-mode: scale-to-fit; top: 3px; position: absolute; width: 100px; height: 24px; left: 32px; scale: -1.4 0.5;" />
+                    <ui:VisualElement class="straight-arrow" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/_Game/Images/Arrows/swipe_arrow.png?fileID=2800000&amp;guid=3840095536594574d848ecd31fe92c84&amp;type=3#swipe_arrow&quot;); -unity-background-scale-mode: scale-to-fit; top: 39px; position: absolute; width: 53px; height: 32px; left: 102px; rotate: -212deg; scale: -1 1;" />
+                    <ui:VisualElement class="straight-arrow" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/_Game/Images/Arrows/swipe_arrow.png?fileID=2800000&amp;guid=3840095536594574d848ecd31fe92c84&amp;type=3#swipe_arrow&quot;); -unity-background-scale-mode: scale-to-fit; top: 41px; position: absolute; width: 62px; height: 32px; left: 16px; rotate: -160deg; scale: -1 1;" />
+                </ColorReplacer>
+                <ui:VisualElement name="actions-container" class="actions-container">
+                    <ui:Instance template="Counterclockwise" />
+                    <ui:Instance template="WestToUp" />
+                    <ui:Instance template="Clockwise" />
+                    <ui:Instance template="EastToDown" />
+                    <ui:Instance template="Counterclockwise" />
+                    <ui:Instance template="WestToDown" />
+                    <ui:Instance template="Clockwise" />
+                    <ui:Instance template="EastToUp" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:Label text="*При возникновении трудностей, можно переключиться на сборку других цветов/граней или начать этап заново. В некоторых случаях может помочь информация из других разделов." name="bottom-text" class="content__paragraph" />
+        <ui:VisualElement name="bottom-space" class="content__bottom-space" />
+    </ui:VisualElement>
+</ui:UXML>

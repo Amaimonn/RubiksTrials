@@ -1,0 +1,24 @@
+.tutorial-tab__label {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    margin-top: 0;
+    margin-bottom: 0;
+    -unity-text-align: middle-center;
+    justify-content: center;
+    min-width: auto;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-right: 0;
+    margin-left: 0;
+    min-height: auto;
+    white-space: nowrap;
+    font-size: 40px;
+    -unity-font-definition: url("project://database/Assets/_Game/Fonts/RussoOne-Regular.ttf?fileID=12800000&guid=60fe5b797e2614340aa13c0fe520dfda&type=3#RussoOne-Regular");
+}
+
+.tutorial-tab__label:hover {
+    -unity-font-definition: url("project://database/Assets/_Game/Fonts/RussoOne-Regular.ttf?fileID=12800000&guid=60fe5b797e2614340aa13c0fe520dfda&type=3#RussoOne-Regular");
+}

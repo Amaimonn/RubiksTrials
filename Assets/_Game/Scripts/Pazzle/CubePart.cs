@@ -35,6 +35,17 @@ public class CubePart : MonoBehaviour
         Direction = PartDirectionFromAxis(axis);
     }
 
+    public void RoundPosition()
+    {
+        var newPosition = transform.position;
+
+        newPosition.x = Mathf.Round(newPosition.x * 10f) / 10f;
+        newPosition.y = Mathf.Round(newPosition.y * 10f) / 10f;
+        newPosition.z = Mathf.Round(newPosition.z * 10f) / 10f;
+
+        transform.position = newPosition;
+    }
+
     public void RotateCubePart(Vector3 relativeTo, Vector3 axis, float angle)
     {
         transform.RotateAround(relativeTo, axis, angle);

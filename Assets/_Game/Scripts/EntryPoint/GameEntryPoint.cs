@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using R3;
 using Assets._Game.Scripts.MVVM;
-using Unity.VisualScripting;
 
 namespace Assets._Game.Scripts.EntryPoint
 {
@@ -40,7 +39,6 @@ namespace Assets._Game.Scripts.EntryPoint
 
             _instance = new GameEntryPoint();
             _instance.Run();
-
         }
 
         private void Run()

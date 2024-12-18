@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SwipeLongCommand : RotationParameters, ILongCommand
@@ -53,8 +52,8 @@ public class SwipeLongCommand : RotationParameters, ILongCommand
         
         foreach (var cubePart in _cubeParts)
         {
-            // cubePart.RotateCubePart(_relativeTo, _axis, sign * remainAngle);
             cubePart.UpdateDirection(_relativeTo);
+            cubePart.RoundPosition();
         }
     }
 }

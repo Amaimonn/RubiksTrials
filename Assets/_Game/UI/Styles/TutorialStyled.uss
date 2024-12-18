@@ -117,7 +117,7 @@
     padding-left: 10px;
     font-size: 30px;
     color: rgb(255, 255, 255);
-    -unity-font-definition: url("project://database/Assets/YandexGame/Fonts/Roboto-Regular.ttf?fileID=12800000&guid=82cc91725ab2f0c41920038a250d768b&type=3#Roboto-Regular");
+    -unity-font-definition: url("project://database/Assets/_Game/Fonts/RussoOne-Regular.ttf?fileID=12800000&guid=60fe5b797e2614340aa13c0fe520dfda&type=3#RussoOne-Regular");
 }
 
 .tutorial__scrollview #unity-content-container {

@@ -10,13 +10,8 @@ namespace Assets._Game.Scripts.MVVM.Views
 {
     public class DragControllerView : BaseScreen<DragControlViewModel>
     {
-        [Header("UI")]
-        [SerializeField] private GameObject _panel;
-        [SerializeField] private GameObject _upArrow;
-        [SerializeField] private GameObject _downArrow;
-        [SerializeField] private GameObject _rightArrow;
-        [SerializeField] private GameObject _leftArrow;
-        [SerializeField] private Collider _cancelZone;
+        [Header("Controller")]
+        [SerializeField] private WorldDragController _worldDragControllerPrefab;
 
         [Space(10)]
         [SerializeField] private float _panelOffset = 0.1f;
@@ -33,6 +28,7 @@ namespace Assets._Game.Scripts.MVVM.Views
         private Vector3 _hitNormal;
         private Vector3 _readPartPosition;
         private CompositeDisposable _disposables;
+        private WorldDragController _worldDragController;
 
         protected override void OnBind(DragControlViewModel viewModel)
         {
@@ -50,7 +46,8 @@ namespace Assets._Game.Scripts.MVVM.Views
         private void Awake()
         {
             _camera = Camera.main;
-            _panel.SetActive(false);
+            _worldDragController = Instantiate(_worldDragControllerPrefab);
+            _worldDragController.Panel.SetActive(false);
         }
 
         private void OnEnable()
@@ -67,6 +64,8 @@ namespace Assets._Game.Scripts.MVVM.Views
 
         private void OnDestroy()
         {
+            if (_worldDragController != null)
+                Destroy(_worldDragController);
             Dispose();
         }
 #endregion
@@ -94,9 +93,9 @@ namespace Assets._Game.Scripts.MVVM.Views
                         _isShown = true;
                         // Debug.Log($"LookRotation: {-_readHit.normal}, {part.transform.up}");
                         var panelUp = part.transform.up == _hitNormal ? part.transform.forward : part.transform.up;
-                        _panel.transform.SetPositionAndRotation(_readHit.point, Quaternion.LookRotation(-_hitNormal, panelUp));
-                        _panel.transform.position += _hitNormal * _panelOffset;
-                        _panel.SetActive(true);
+                        _worldDragController.Panel.transform.SetPositionAndRotation(_readHit.point, Quaternion.LookRotation(-_hitNormal, panelUp));
+                        _worldDragController.Panel.transform.position += _hitNormal * _panelOffset;
+                        _worldDragController.Panel.SetActive(true);
                     }
                 }
             }
@@ -154,7 +153,7 @@ namespace Assets._Game.Scripts.MVVM.Views
             var ray = _camera.ScreenPointToRay(_positionInput);
             if (Physics.Raycast(ray, out var hit))
             {
-                if (hit.collider == _cancelZone)
+                if (hit.collider == _worldDragController.CancelZone)
                 {
                     isCanceled = true;
                 }
@@ -162,10 +161,10 @@ namespace Assets._Game.Scripts.MVVM.Views
 
             if (!isCanceled)
             {
-                var upDistance = ((_panel.transform.position - _upArrow.transform.position).normalized, ((Vector2)_camera.WorldToScreenPoint(_upArrow.transform.position) - _positionInput).magnitude);
-                var downDistance = ((_panel.transform.position - _downArrow.transform.position).normalized, ((Vector2)_camera.WorldToScreenPoint(_downArrow.transform.position) - _positionInput).magnitude);
-                var rightDistance = ((_panel.transform.position - _rightArrow.transform.position).normalized, ((Vector2)_camera.WorldToScreenPoint(_rightArrow.transform.position) - _positionInput).magnitude);
-                var leftDistance = ((_panel.transform.position - _leftArrow.transform.position).normalized, ((Vector2)_camera.WorldToScreenPoint(_leftArrow.transform.position) - _positionInput).magnitude);
+                var upDistance = ((_worldDragController.Panel.transform.position - _worldDragController.UpArrow.transform.position).normalized, ((Vector2)_camera.WorldToScreenPoint(_worldDragController.UpArrow.transform.position) - _positionInput).magnitude);
+                var downDistance = ((_worldDragController.Panel.transform.position - _worldDragController.DownArrow.transform.position).normalized, ((Vector2)_camera.WorldToScreenPoint(_worldDragController.DownArrow.transform.position) - _positionInput).magnitude);
+                var rightDistance = ((_worldDragController.Panel.transform.position - _worldDragController.RightArrow.transform.position).normalized, ((Vector2)_camera.WorldToScreenPoint(_worldDragController.RightArrow.transform.position) - _positionInput).magnitude);
+                var leftDistance = ((_worldDragController.Panel.transform.position - _worldDragController.LeftArrow.transform.position).normalized, ((Vector2)_camera.WorldToScreenPoint(_worldDragController.LeftArrow.transform.position) - _positionInput).magnitude);
 
                 var swipeChoise = new List<(Vector3 swipeDirection, float magnitude)>(){upDistance, downDistance, rightDistance, leftDistance};
 
@@ -186,7 +185,7 @@ namespace Assets._Game.Scripts.MVVM.Views
             if (_isShown)
             {
                 _isShown = false;
-                _panel.SetActive(false);
+                _worldDragController.Panel.SetActive(false);
             }
         }
 

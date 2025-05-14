@@ -11,7 +11,6 @@ public class Invoker : MonoBehaviour
     
     private const int CACHE_SIZE = 30;
     private readonly Queue<ILongCommand> _longCommands = new();
-    // private readonly ObservableStack<ILongCommand> _longCommandsBuffer = new(CACHE_SIZE);
     private readonly ObservableFixedSizeRingBuffer<ILongCommand> _undoLongCommandsBuffer = new(CACHE_SIZE);
     private readonly ObservableFixedSizeRingBuffer<ILongCommand> _redoLongCommandsBuffer = new(CACHE_SIZE);
 
@@ -60,7 +59,6 @@ public class Invoker : MonoBehaviour
         if (longCommandToExecute != null)
         {
             yield return longCommandToExecute.Execute();
-            //_longCommandsBuffer.Push(longCommandToExecute);
             PushLongCommandsUndoBuffer(longCommandToExecute);
         } 
         callback?.Invoke();

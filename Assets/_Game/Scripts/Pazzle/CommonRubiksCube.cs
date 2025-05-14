@@ -7,18 +7,24 @@ using Assets._Game.Scripts;
 
 public class CommonRubiksCube : MonoBehaviour
 {
-    public Vector3 CoreCenter { get => _core.GetComponent<Renderer>().bounds.center; }
+    public Vector3 CoreCenter
+    {
+        get 
+        {
+            if (_renderer == null)
+                _renderer = _core.GetComponent<Renderer>();
+            return _renderer.bounds.center;
+        }
+    }
 
     public readonly float RotationAngle = 90;
     public CubePart[] CubeParts => _cubeParts;
-    
+
     [SerializeField] private CubePart[] _cubeParts;
     [SerializeField] private Transform _core;
     [SerializeField] private ParticleSystem _victoryParticles;
     [SerializeField] private ParticleSystem _loseParticles;
-    // [SerializeField] private TMP_Text _stateText;
-    //private bool _inited = false;
-    
+    private Renderer _renderer;
     public void UpdatePartsDirection()
     {
         foreach (var part in _cubeParts)
@@ -79,29 +85,12 @@ public class CommonRubiksCube : MonoBehaviour
         if (faceForward == 0)
             return false;
 
-        // var localDirection = CubePart.AxisFromPartDirection(faceForward);
         // проверка частей на правильный поворот по нормали к грани
-        if(checkCubes.All(c => c.CompareDirections(faceForward) == checkCubes.First().CompareDirections(faceForward)))
+        if (checkCubes.All(c => c.CompareDirections(faceForward) == checkCubes.First().CompareDirections(faceForward)))
             return true;
 
         return false;
     }
-    // private void OnValidate()
-    // {
-    //     if (!_inited)
-    //     {
-    //         _cubeParts = GetComponentsInChildren<CubePart>();
-    //         SetInitialPartsDirection();
-    //         _inited = true;
-    //     }
-    // }
-    // private void SetInitialPartsDirection()
-    // {
-    //     foreach (var cubePart in _cubeParts)
-    //     {
-    //         cubePart.SetInitialDirection(CoreCenter);
-    //     }
-    // }
 
     public bool CheckPartsHasCommonDirection(CubePart checkCube1, CubePart checkCube2)
     {
@@ -113,7 +102,7 @@ public class CommonRubiksCube : MonoBehaviour
 
         // var localDirection = CubePart.AxisFromPartDirection(faceForward);
         // проверка частей на правильный поворот 
-        if(checkCube1.CompareDirections(faceForward) == checkCube2.CompareDirections(faceForward))
+        if (checkCube1.CompareDirections(faceForward) == checkCube2.CompareDirections(faceForward))
             return true;
 
         return false;
@@ -133,7 +122,7 @@ public class CommonRubiksCube : MonoBehaviour
             if (!faceForward.HasFlag(checkDirection))
                 continue;
 
-            if(!checkParts.All(c => c.CompareDirections(checkDirection) == checkParts.First().CompareDirections(checkDirection)))
+            if (!checkParts.All(c => c.CompareDirections(checkDirection) == checkParts.First().CompareDirections(checkDirection)))
                 return false;
         }
 
@@ -145,7 +134,7 @@ public class CommonRubiksCube : MonoBehaviour
         // получили все части с выбранным цветом
         var allEdgeParts = _cubeParts.Where(part => part.Colors.HasFlag(color));
         // получили все цвета рассматриваемых частей
-        var checkColors = allEdgeParts.Select(part => part.Colors).Aggregate((a, b) => a | b );
+        var checkColors = allEdgeParts.Select(part => part.Colors).Aggregate((a, b) => a | b);
         IEnumerable<CubePart> checkEdgeParts;
         foreach (PartColors checkColor in Enum.GetValues(typeof(PartColors)))
         {
@@ -189,7 +178,7 @@ public class CommonRubiksCube : MonoBehaviour
         {
             particleSystem = Instantiate(_victoryParticles);
             soundPlayer.PlayVictory();
-        } 
+        }
         else
         {
             particleSystem = Instantiate(_loseParticles);
@@ -203,7 +192,7 @@ public class CommonRubiksCube : MonoBehaviour
     public IEnumerator MixCube(int swipesCount, Func<bool> endCondition, float speed = 200.0f, Action onFinishCallback = null)
     {
         if (_cubeParts.All(part => part.IsBusy == false))
-        {       
+        {
             var soundPlayer = ServiceLocator.Current.Get<SoundPlayer>();
 
             _cubeParts.ToList().ForEach(part => part.IsBusy = true);
@@ -227,7 +216,7 @@ public class CommonRubiksCube : MonoBehaviour
                         axis = -axis;
                     var partDirection = _cubeParts.First().PartDirectionFromAxis(axis);
                     var cubesToSwipe = _cubeParts.Where(c => (partDirection & c.Direction) != 0);
-                    yield return new SwipeLongCommand(cubesToSwipe, speed * (1 + i/5.0f), CoreCenter, axis, angle).Execute();
+                    yield return new SwipeLongCommand(cubesToSwipe, speed * (1 + i / 5.0f), CoreCenter, axis, angle).Execute();
                 }
             }
             while (endCondition.Invoke() && swipesCount > 0);
@@ -236,19 +225,4 @@ public class CommonRubiksCube : MonoBehaviour
             onFinishCallback?.Invoke();
         }
     }
-    
-    // public void SetConfiguration(CommonRubiksCube cube)
-    // {
-    //     transform.SetPositionAndRotation(cube.transform.position, 
-    //         cube.transform.rotation);
-    //     var parts = GetComponentsInChildren<CubePart>();
-    //     var presetParts = cube.GetComponentsInChildren<CubePart>();
-    //     for (var i = 0; i < parts.Length; i++)
-    //     {
-    //         parts[i].transform.SetPositionAndRotation(presetParts[i].transform.position, presetParts[i].transform.rotation);
-    //         parts[i].IsBusy = false;
-    //     }
-        
-    //     UpdatePartsDirection();
-    // }
 }

@@ -1,2 +1,0 @@
-Build path: D:/Art/UnityProjects/LocalProjects/RubiksTrials/Builds
-Build number: 2

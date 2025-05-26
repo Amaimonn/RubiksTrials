@@ -38,9 +38,7 @@ public class GameplayEntryPoint : MonoBehaviour
         _uiManager.Initialize(levelViews);
 
         foreach (var cube in _rubiksCubes)
-        {
             cube.gameObject.SetActive(false);
-        }
         
         _selectedCubeIndex = enterGameplayParameters.CubeIndex;
         _selectedCube = _rubiksCubes[_selectedCubeIndex];

@@ -12,7 +12,6 @@ namespace Assets._Game.Scripts.MVVM.ViewModels
         public Observable<bool> IsControlEnabled => _isControlEnabled;
 
         private ReactiveProperty<bool> _isControlEnabled = new();
-        private Func<Vector3, IGetPartsCommand> GetPartsCommand => (e) => new GetPartsWithAxisCommand(e);
         private CompositeDisposable _disposables;
 
 
@@ -30,62 +29,67 @@ namespace Assets._Game.Scripts.MVVM.ViewModels
 
         public void OnSwipeNorthPositiveButtonClicked()
         {
-            _model.Swipe(GetPartsCommand(Vector3.forward), Vector3.forward, true);
+            _model.Swipe(CreateGetPartsCommand(Vector3.forward), Vector3.forward, true);
         }
 
         public void OnSwipeNorthNegativeButtonClicked()
         {
-            _model.Swipe(GetPartsCommand(Vector3.forward), Vector3.forward, false);
+            _model.Swipe(CreateGetPartsCommand(Vector3.forward), Vector3.forward, false);
         }
 
         public void OnSwipeSouthPositiveButtonClicked()
         {
-            _model.Swipe(GetPartsCommand(Vector3.back), Vector3.back, true);
+            _model.Swipe(CreateGetPartsCommand(Vector3.back), Vector3.back, true);
         }
 
         public void OnSwipeSouthNegativeButtonClicked()
         {
-            _model.Swipe(GetPartsCommand(Vector3.back), Vector3.back, false);
+            _model.Swipe(CreateGetPartsCommand(Vector3.back), Vector3.back, false);
         }
 
         public void OnSwipeEastPositiveButtonClicked()
         {
-            _model.Swipe(GetPartsCommand(Vector3.right), Vector3.right, true);
+            _model.Swipe(CreateGetPartsCommand(Vector3.right), Vector3.right, true);
         }
 
         public void OnSwipeEastNegativeButtonClicked()
         {
-            _model.Swipe(GetPartsCommand(Vector3.right), Vector3.right, false);
+            _model.Swipe(CreateGetPartsCommand(Vector3.right), Vector3.right, false);
         }
 
         public void OnSwipeWestPositiveButtonClicked()
         {
-            _model.Swipe(GetPartsCommand(Vector3.left), Vector3.left, true);
+            _model.Swipe(CreateGetPartsCommand(Vector3.left), Vector3.left, true);
         }
 
         public void OnSwipeWestNegativeButtonClicked()
         {
-            _model.Swipe(GetPartsCommand(Vector3.left), Vector3.left, false);
+            _model.Swipe(CreateGetPartsCommand(Vector3.left), Vector3.left, false);
         }
 
         public void OnSwipeTopPositiveButtonClicked()
         {
-            _model.Swipe(GetPartsCommand(Vector3.up), Vector3.up, true);
+            _model.Swipe(CreateGetPartsCommand(Vector3.up), Vector3.up, true);
         }
 
         public void OnSwipeTopNegativeButtonClicked()
         {
-            _model.Swipe(GetPartsCommand(Vector3.up), Vector3.up, false);
+            _model.Swipe(CreateGetPartsCommand(Vector3.up), Vector3.up, false);
         }
 
         public void OnSwipeBottomPositiveButtonClicked()
         {
-            _model.Swipe(GetPartsCommand(Vector3.down), Vector3.down, true);
+            _model.Swipe(CreateGetPartsCommand(Vector3.down), Vector3.down, true);
         }
 
         public void OnSwipeBottomNegativeButtonClicked()
         {
-            _model.Swipe(GetPartsCommand(Vector3.down), Vector3.down, false);
+            _model.Swipe(CreateGetPartsCommand(Vector3.down), Vector3.down, false);
+        }
+
+        private IGetPartsCommand CreateGetPartsCommand(Vector3 axis)
+        {
+            return new GetPartsWithAxisCommand(axis);
         }
 
         public override void Dispose()

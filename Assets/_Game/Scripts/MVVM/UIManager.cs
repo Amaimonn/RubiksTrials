@@ -9,7 +9,6 @@ namespace Assets._Game.Scripts.MVVM
 {
     public class UIManager : MonoBehaviour, IService
     {
-        // private IEnumerable<BaseScreen<IViewModel>> _screens;
         public float TransitionDelay => _transitionTime;
         [SerializeField] private RectTransform _canvasRectTransform;
         [SerializeField] private CanvasGroup _canvasGroup;

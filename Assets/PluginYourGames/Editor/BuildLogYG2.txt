@@ -1,0 +1,3 @@
+Build path: D:/Art/UnityProjects/LocalProjects/RubiksTrials/Builds/YG2_prod_rb
+Build number: 2
+PluginYG version: 2.0032

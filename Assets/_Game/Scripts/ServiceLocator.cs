@@ -14,7 +14,7 @@ public class ServiceLocator
 
         if(_services.ContainsKey(key))
         {
-            Debug.LogError("Service already registered:  " + key);
+            Debug.LogError("Service is already registered:  " + key);
             throw new InvalidOperationException();
         }
 

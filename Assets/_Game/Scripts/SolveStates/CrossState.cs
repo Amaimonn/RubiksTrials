@@ -9,7 +9,8 @@ namespace Assets._Game.Scripts.SolveStates
     {
         public override bool Compare(CommonRubiksCube cube)
         {
-            foreach (PartColors color in Enum.GetValues(typeof(PartColors)))
+            var enumPartColors = Enum.GetValues(typeof(PartColors));
+            foreach (PartColors color in enumPartColors)
             {
                 if (CheckCrossIsSolved(cube, color))
                     return true;
@@ -30,14 +31,15 @@ namespace Assets._Game.Scripts.SolveStates
         public bool TryGetCrossIsSolved(CommonRubiksCube cube, out IEnumerable<PartColors> partColorsWithCross)
         {
             var partColors = new List<PartColors>();
-            foreach (PartColors color in Enum.GetValues(typeof(PartColors)))
+            var enumPartColors = Enum.GetValues(typeof(PartColors));
+
+            foreach (PartColors color in enumPartColors)
             {
                 if (CheckCrossIsSolved(cube, color))
-                {
                     partColors.Add(color);
-                }
             }
             partColorsWithCross = partColors;
+
             return partColors.Count() > 0;
         }
 
@@ -51,9 +53,7 @@ namespace Assets._Game.Scripts.SolveStates
                 return true;
             // проверка на плюс стороны цвета color (без учета боковых)
             if (!cube.CheckPartsHasCommonDirection(crossParts))
-            {
                 return false;
-            }
             // боковые (двухцветные) части плюса
             var twoColoredParts = crossParts.Where(part => part.Colors.GetFlagsCount() > 1);
             CubePart oneColoredPart;

@@ -41,7 +41,7 @@ public class SwipeLongCommand : RotationParameters, ILongCommand
 
         while (remainAngle > 0.0f)
         {
-            lerpAngle = Mathf.Min(remainAngle, Time.deltaTime * _speed); // 80.0f - speed
+            lerpAngle = Mathf.Min(remainAngle, Time.deltaTime * _speed);
             foreach (var cubePart in _cubeParts)
             {
                 cubePart.RotateCubePart(_relativeTo, _axis, sign * lerpAngle);

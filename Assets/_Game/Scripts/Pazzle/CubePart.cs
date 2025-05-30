@@ -16,19 +16,6 @@ public class CubePart : MonoBehaviour
     [SerializeField] private Renderer _renderer;
     [SerializeField] private Vector3 _initialDirection;
 
-
-    // private void OnValidate()
-    // {
-    //     // _renderer = GetComponent<Renderer>();
-    //     UpdateDirection(new Vector3(0, 8.8f, 0));
-    //     var initAxis = AxisFromPartDirection(Direction);
-    //         // initAxis.x *= _directionCorrection.x;
-    //         // initAxis.y *= _directionCorrection.y;
-    //         // initAxis.z *= _directionCorrection.z;
-    //     _initialDirection = initAxis;
-
-    // }
-
     public void UpdateDirection(Vector3 relativeTo)
     {
         var axis = (Center - relativeTo).normalized;
@@ -93,11 +80,11 @@ public class CubePart : MonoBehaviour
         return axis;
     }
 
-    // какой face из трёх смотрит в направлении partDirection
+    
     public Vector3 CompareDirections(PartDirection partDirection)
     {
         Vector3 result = Vector3.zero;
-        switch (partDirection)
+        switch (partDirection) // какой face из трёх смотрит в направлении partDirection
         {
             case PartDirection.East:
             {

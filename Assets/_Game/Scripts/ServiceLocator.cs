@@ -10,7 +10,7 @@ public class ServiceLocator
 
     public void Register<TService>(TService service) where TService : IService
     {
-        string key  = typeof(TService).Name;
+        var key  = typeof(TService).Name;
 
         if(_services.ContainsKey(key))
         {
@@ -23,7 +23,7 @@ public class ServiceLocator
 
     public void Unregister<TService>() where TService  : IService
     {
-        string key  = typeof(TService).Name;
+        var key  = typeof(TService).Name;
 
         if(!_services.ContainsKey(key))
         {
@@ -36,7 +36,7 @@ public class ServiceLocator
 
     public TService Get<TService>() where TService : IService
     {
-        string key = typeof(TService).Name;
+        var key = typeof(TService).Name;
 
         if(!_services.ContainsKey(key))
         {

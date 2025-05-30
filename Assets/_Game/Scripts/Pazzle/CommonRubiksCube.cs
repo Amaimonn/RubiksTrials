@@ -11,9 +11,9 @@ public class CommonRubiksCube : MonoBehaviour
     {
         get 
         {
-            if (_renderer == null)
-                _renderer = _core.GetComponent<Renderer>();
-            return _renderer.bounds.center;
+            if (_coreRenderer == null)
+                _coreRenderer = _core.GetComponent<Renderer>();
+            return _coreRenderer.bounds.center;
         }
     }
 
@@ -24,7 +24,9 @@ public class CommonRubiksCube : MonoBehaviour
     [SerializeField] private Transform _core;
     [SerializeField] private ParticleSystem _victoryParticles;
     [SerializeField] private ParticleSystem _loseParticles;
-    private Renderer _renderer;
+
+    private Renderer _coreRenderer;
+
     public void UpdatePartsDirection()
     {
         foreach (var part in _cubeParts)
@@ -36,9 +38,7 @@ public class CommonRubiksCube : MonoBehaviour
         foreach (PartColors color in Enum.GetValues(typeof(PartColors)))
         {
             if (CheckOneFaceIsSolved(color))
-            {
                 continue;
-            }
 
             return false;
         }
@@ -50,9 +50,7 @@ public class CommonRubiksCube : MonoBehaviour
         foreach (PartColors color in Enum.GetValues(typeof(PartColors)))
         {
             if (CheckOneFaceIsSolved(color))
-            {
                 return true;
-            }
         }
         return false;
     }
@@ -63,9 +61,7 @@ public class CommonRubiksCube : MonoBehaviour
         foreach (PartColors color in Enum.GetValues(typeof(PartColors)))
         {
             if (CheckOneFaceIsSolved(color))
-            {
                 solvedSides++;
-            }
         }
         return solvedSides;
     }
@@ -108,9 +104,9 @@ public class CommonRubiksCube : MonoBehaviour
         return false;
     }
 
-    // проверка что части имеют одинаковый поворот на общих направлениях
     public bool CheckPartsHasEqualDirections(IEnumerable<CubePart> checkParts)
     {
+        // проверка что части имеют одинаковый поворот на общих направлениях
         // все общие направления частей цвета partColor (без учета поворота частей)
         var faceForward = checkParts.Select(p => p.Direction).Aggregate((a, b) => a & b);
 
@@ -153,20 +149,6 @@ public class CommonRubiksCube : MonoBehaviour
         }
 
         return true;
-    }
-
-    private IEnumerator FlickerAnimation(IEnumerable<CubePart> cubeParts)
-    {
-        bool isVisible = false;
-        for (var i = 0; i < 6; i++)
-        {
-            foreach (var part in cubeParts)
-            {
-                part.SetVisibility(isVisible);
-            }
-            isVisible = !isVisible;
-            yield return new WaitForSeconds(0.06f);
-        }
     }
 
     public void PlayOnSolvedEffects(bool isSolved)

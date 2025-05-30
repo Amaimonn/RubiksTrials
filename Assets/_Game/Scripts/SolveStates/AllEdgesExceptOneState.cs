@@ -40,17 +40,13 @@ namespace Assets._Game.Scripts.SolveStates
             foreach (PartColors partColor in Enum.GetValues(typeof(PartColors)))
             {
                 if (!neighborColors.HasFlag(partColor))
-                { 
                     continue; 
-                }
 
                 partsWithCommonColor = checkParts.Where(part => part.Colors.HasFlag(partColor));
                 if (!cube.CheckPartsHasEqualDirections(partsWithCommonColor))
-                {
                     return false;
-                }
             }
-            // StartCoroutine(FlickerAnimation(checkParts));
+            
             return true;
         }
     }

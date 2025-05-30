@@ -47,20 +47,18 @@ namespace Assets._Game.Scripts.SolveStates
             foreach (PartColors partColor in Enum.GetValues(typeof(PartColors)))
             {
                 if (partColor == oppositePartColor)
-                {
                     continue;
-                }
                 
                 oneColorParts = allExceptCrossAngles.Where(part => part.Colors.HasFlag(partColor));
                 // проверка на совпадение цветов на грани за исключением углов возле креста
-                // CheckPartsHasEqualDirections(oneColorParts);
+
                 if (!oneColorParts
                     .All((part) => cube.CheckPartsHasCommonDirection(part, oneColorParts.Where(part => part.Colors.GetFlagsCount()==1).First())))
                 {
                     return false;
                 }
             }
-            // StartCoroutine(FlickerAnimation(allExceptCrossAngles));
+
             return true;
         }
     }

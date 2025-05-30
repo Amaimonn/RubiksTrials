@@ -29,7 +29,7 @@ namespace Assets._Game.Scripts.MVVM.ViewModels
         public void Swipe(Vector3 partNormal, Vector3 swipeDirection, Vector3 partPosition)
         {
             var plane = new Plane(partNormal + partPosition, swipeDirection + partPosition, partPosition);
-            var definePartsCommand = new GetPartsOnPlaneCommand(plane); // to model
+            var definePartsCommand = new GetPartsOnPlaneCommand(plane);
             _model.Swipe(definePartsCommand, plane.normal, true);
         }
 

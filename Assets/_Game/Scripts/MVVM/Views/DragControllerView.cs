@@ -101,39 +101,6 @@ namespace Assets._Game.Scripts.MVVM.Views
             }
         }
         
-        // private Vector3 BoxIgnoreCornerNormal(RaycastHit hit)
-        // {
-        //     var part = hit.collider.gameObject;
-        //     Vector3 localHitPoint = part.transform.InverseTransformPoint(hit.point);
-
-        //     // Получаем размеры кубика
-        //     Vector3 extents = hit.collider.bounds.extents;
-
-        //     // Определяем нормаль в зависимости от того, какая координата локального попадания ближе к границе (по осям X, Y или Z)
-        //     Vector3 localNormal = Vector3.zero;
-
-        //     float maxDistance = Mathf.Max(Mathf.Abs(localHitPoint.x - extents.x), Mathf.Abs(localHitPoint.y - extents.y), 
-        //         Mathf.Abs(localHitPoint.z - extents.z));
-
-        //     if (Mathf.Abs(localHitPoint.x - extents.x) == maxDistance)
-        //     {
-        //         localNormal = new Vector3(Mathf.Sign(localHitPoint.x), 0, 0);
-        //     }
-        //     else if (Mathf.Abs(localHitPoint.y - extents.y) == maxDistance)
-        //     {
-        //         localNormal = new Vector3(0, Mathf.Sign(localHitPoint.y), 0);
-        //     }
-        //     else if (Mathf.Abs(localHitPoint.z - extents.z) == maxDistance)
-        //     {
-        //         localNormal = new Vector3(0, 0, Mathf.Sign(localHitPoint.z));
-        //     }
-
-        //     // Преобразуем нормаль обратно в мировые координаты
-        //     Vector3 worldNormal = part.transform.TransformDirection(localNormal);
-        //     return worldNormal;
-        // }
-        
-        // only for cubes
         private Vector3 RoundVector(Vector3 vector)
         {
             return new Vector3(Mathf.Round(vector.x), Mathf.Round(vector.y), Mathf.Round(vector.z));
@@ -169,7 +136,7 @@ namespace Assets._Game.Scripts.MVVM.Views
                 var swipeChoise = new List<(Vector3 swipeDirection, float magnitude)>(){upDistance, downDistance, rightDistance, leftDistance};
 
                 var (swipeDirection, magnitude) = swipeChoise.Where(x => x.magnitude == swipeChoise.Max(x => x.magnitude)).First();
-                // Debug.Log($"definedSwipe: {definedSwipe}");
+
 
                 _viewModel.Swipe(RoundVector(_hitNormal),  RoundVector(swipeDirection), _readPartPosition);
             }

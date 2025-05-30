@@ -41,20 +41,16 @@ namespace Assets._Game.Scripts.SolveStates
             foreach (PartColors partColor in Enum.GetValues(typeof(PartColors)))
             {
                 if (partColor == oppositePartColor)
-                {
                     continue;
-                }
                 // общая плоскость у частей грани, имеющей цвет partColor, за исключением угловых частей последней грани
                 commonDirection = allExceptCrossAngles
                     .Where(part => part.Colors.HasFlag(partColor))
                     .Select(part => part.Direction)
                     .Aggregate((a, b) => a & b);
                 if (commonDirection == 0)
-                {
                     return false;
-                }
             }
-            //StartCoroutine(FlickerAnimation(allExceptCrossAngles));
+
             return true;
         }
 

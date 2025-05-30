@@ -19,7 +19,7 @@
             </ui:VisualElement>
             <ui:VisualElement name="transition-arrow" class="transition-arrow" />
             <ui:VisualElement name="state-container" class="state-container">
-                <ColorReplacer fill-colors="#606060FF,#FF9D18FF,#606060FF,#FF9D18FF,#FF9D18FF,#FF9D18FF,#606060FF,#FF9D18FF,#606060FF,#606060FF,#FFFFF9FF,#606060FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#606060FF,#55FF4CFF,#606060FF,#55FF4CFF,#55FF4CFF,#55FF4CFF,#55FF4CFF,#55FF4CFF,#55FF4CFF" box-sizing="true" class="state__image" />
+                <ColorReplacer fill-colors="#FF9D18FF,#FF9D18FF,#FF9D18FF,#FF9D18FF,#FF9D18FF,#FF9D18FF,#FF9D18FF,#FF9D18FF,#FF9D18FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#FFFFF9FF,#55FF4CFF,#55FF4CFF,#55FF4CFF,#55FF4CFF,#55FF4CFF,#55FF4CFF,#55FF4CFF,#55FF4CFF,#55FF4CFF" box-sizing="true" class="state__image" />
                 <ui:Label tabindex="-1" text="Кубик собран" name="state__label" class="state__label" />
             </ui:VisualElement>
         </ui:VisualElement>

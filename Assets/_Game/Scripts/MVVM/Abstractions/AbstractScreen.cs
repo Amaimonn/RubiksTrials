@@ -14,6 +14,5 @@ namespace Assets._Game.Scripts.MVVM.Abstractions
         public virtual void Dispose()
         {
         }
-    }
-    
+    }   
 }

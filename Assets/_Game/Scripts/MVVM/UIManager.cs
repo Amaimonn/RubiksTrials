@@ -10,6 +10,7 @@ namespace Assets._Game.Scripts.MVVM
     public class UIManager : MonoBehaviour, IService
     {
         public float TransitionDelay => _transitionTime;
+
         [SerializeField] private RectTransform _canvasRectTransform;
         [SerializeField] private CanvasGroup _canvasGroup;
         [SerializeField] private float _groupAnimationTime = 0.5f;
@@ -17,6 +18,7 @@ namespace Assets._Game.Scripts.MVVM
         [SerializeField] private float _transitionTime = 1.0f;
         [SerializeField] private GameObject _loadingScreen;
         [SerializeField] private Transform _uiSceneContainer;
+
         private Dictionary<Type, AbstractScreen> _screensMap;
         private Dictionary<Type, AbstractScreen> _shownScreens;
 
@@ -92,31 +94,18 @@ namespace Assets._Game.Scripts.MVVM
             sceneUI.transform.SetParent(_uiSceneContainer, false);
         }
 
-        // public void AttachSceneUI<T>(IEnumerable<T> sceneUIs) where T : MonoBehaviour
-        // {
-        //     ClearSceneUI();
-        //     foreach (var sceneUI in sceneUIs)
-        //     {
-        //         sceneUI.transform.SetParent(_uiSceneContainer, false);
-        //     }
-        // }
-
         private void ClearSceneUI()
         {
             var childCount = _uiSceneContainer.childCount;
             for (var i = 0; i < childCount; i++)
-            {
                 Destroy(_uiSceneContainer.GetChild(i).gameObject);
-            }
         }
         
         public void Initialize(IEnumerable<AbstractScreen> screens)
         {
             _shownScreens = new();
             foreach (var screen in screens)
-            {
                 screen.Close();
-            }
 
             _screensMap = screens.ToDictionary(e => e.ViewModelType, e => e);
         }
@@ -151,13 +140,9 @@ namespace Assets._Game.Scripts.MVVM
         public void ShowView<TViewModel>() where TViewModel : IViewModel
         {
             if (_screensMap.TryGetValue(typeof(TViewModel), out var screen))
-            {
                 screen.Show();
-            }
             else
-            {
                 Debug.Log($"viewModel {typeof(TViewModel).Name} not found");
-            }
         }
 
         public void Hide<TViewModel>() where TViewModel : IViewModel

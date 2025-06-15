@@ -10,10 +10,10 @@ using System.Text.RegularExpressions;
 public partial class ColorReplacer : VisualElement
 {
     [UxmlAttribute]
-    public List<Color> FillColors 
-    { 
-        get => _fillColors; 
-        set 
+    public List<Color> FillColors
+    {
+        get => _fillColors;
+        set
         {
             _fillColors = value;
             SetBackgroundSVG();
@@ -22,15 +22,15 @@ public partial class ColorReplacer : VisualElement
     }
 
     [UxmlAttribute]
-    public bool BoxSizing { get => _boxSizing ; set => _boxSizing  = value; }
+    public bool BoxSizing { get => _boxSizing; set => _boxSizing = value; }
 
     private List<Color> _fillColors = new();
     private bool _boxSizing = true;
     private string[] _hexColors = new string[27];
     private string _rubikSVG;
     private List<Action<Painter2D>> _painterActions = new();
-    private float ScaleX => contentRect.width/272; 
-    private float ScaleY => _boxSizing ? ScaleX : contentRect.height/265;
+    private float ScaleX => contentRect.width / 272;
+    private float ScaleY => _boxSizing ? ScaleX : contentRect.height / 265;
 
     public ColorReplacer()
     {
@@ -51,11 +51,9 @@ public partial class ColorReplacer : VisualElement
     public void SetBackgroundSVG()
     {
         for (int i = 0; i < 27; i++)
-        {
-            _hexColors[i] = i < _fillColors.Count ? ToRGBHex(_fillColors[i]) : ToRGBHex(Color.green);//ToRGBHex(FillColors[i]);
-        }
+            _hexColors[i] = i < _fillColors.Count ? ToRGBHex(_fillColors[i]) : ToRGBHex(Color.green);
 
-        _rubikSVG = 
+        _rubikSVG =
         @$"<svg width=""272"" height=""265"" viewBox=""0 0 272 265"" fill=""none"" xmlns=""http://www.w3.org/2000/svg"">
             <path d=""M168.24 81L2 27.2667L126.58 1L270 23.6667L168.24 81Z"" fill=""#23201B"" stroke=""black""/>
             <path d=""M32.2059 173.437L2 27L168 80.5518L147.995 263L32.2059 173.437Z"" fill=""#24221D"" stroke=""black""/>
@@ -92,7 +90,7 @@ public partial class ColorReplacer : VisualElement
 
     private void DefinePainterActions()
     {
-        Regex lineSplitter = new (@"([ML]|=|Z| )");
+        Regex lineSplitter = new(@"([ML]|=|Z| )");
         var splittedSVG = lineSplitter.Split(_rubikSVG
             .Replace("\"", "")
             .Replace("/>", " ")
@@ -101,50 +99,36 @@ public partial class ColorReplacer : VisualElement
             .Where(s => !string.IsNullOrWhiteSpace(s))
             .ToArray();
 
-        //var fillIndex = 0;
         for (int i = 0; i < splittedSVG.Length; i++)
         {
             var current = i;
-            //var fillIter = fillIndex;
             switch (splittedSVG[i])
             {
                 case "M":
-                    _painterActions.Add((Painter2D painter) => painter.BeginPath());
-                    _painterActions.Add((Painter2D painter) => {
-                        painter.MoveTo(new Vector2(float.Parse(splittedSVG[current+1])*ScaleX, 
-                            float.Parse(splittedSVG[current+2])*ScaleY));
+                    _painterActions.Add(painter => painter.BeginPath());
+                    _painterActions.Add(painter =>
+                    {
+                        painter.MoveTo(new Vector2(float.Parse(splittedSVG[current + 1]) * ScaleX,
+                            float.Parse(splittedSVG[current + 2]) * ScaleY));
                     });
                     i += 2;
                     break;
                 case "L":
-                    _painterActions.Add((Painter2D painter) => painter.LineTo(new Vector2(float.Parse(splittedSVG[current+1])*ScaleX, 
-                        float.Parse(splittedSVG[current+2])*ScaleY)));
+                    _painterActions.Add(painter => painter.LineTo(new Vector2(float.Parse(splittedSVG[current + 1]) * ScaleX,
+                        float.Parse(splittedSVG[current + 2]) * ScaleY)));
                     i += 2;
                     break;
                 case "fill":
-                    // Debug.Log($"fill count: {FillingColors.Count}");
-                    // if (fillIndex < _fillColors.Count)
-                    // {
-                    //     painterActions.Add((Painter2D painter) => painter.fillColor = _fillColors[fillIter]);
-                    //     fillIndex++;
-                    // }
-                    // else
-                    {
-                        if (ColorUtility.TryParseHtmlString(splittedSVG[current+1], out Color fillColor))
-                        {
-                            _painterActions.Add((Painter2D painter) => painter.fillColor = fillColor);
-                        }
-                    }
-                    _painterActions.Add((Painter2D painter) => painter.Fill());
+                    if (ColorUtility.TryParseHtmlString(splittedSVG[current + 1], out Color fillColor))
+                        _painterActions.Add(painter => painter.fillColor = fillColor);
+                    _painterActions.Add(painter => painter.Fill());
                     i++;
                     break;
                 case "stroke":
-                    if (ColorUtility.TryParseHtmlString(splittedSVG[current+1], out Color strokeColor))
-                    {
-                        _painterActions.Add((Painter2D painter) => painter.strokeColor = strokeColor);
-                    }
-                    _painterActions.Add((Painter2D painter) => painter.Stroke());
-                    _painterActions.Add((Painter2D painter) => painter.ClosePath());
+                    if (ColorUtility.TryParseHtmlString(splittedSVG[current + 1], out Color strokeColor))
+                        _painterActions.Add(painter => painter.strokeColor = strokeColor);
+                    _painterActions.Add(painter => painter.Stroke());
+                    _painterActions.Add(painter => painter.ClosePath());
                     break;
                 default:
                     break;
@@ -157,17 +141,6 @@ public partial class ColorReplacer : VisualElement
         var painter2D = mgc.painter2D;
         painter2D.lineWidth = 1.0f;
         foreach (var painterAction in _painterActions)
-        {
             painterAction.Invoke(painter2D);
-        }
-
-        // Debug.Log("gen");
-        // for(int i = 0; i < vertices0.Count; i++)
-        // {
-        //     var mesh = mgc.Allocate(vertices0[i].Length, indices0[i].Length);
-        //     mesh.SetAllVertices(vertices0[i].ToArray());
-        //     mesh.SetAllIndices(indices0[i].ToArray());
-        // }
-
     }
 }

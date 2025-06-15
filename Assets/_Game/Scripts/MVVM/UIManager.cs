@@ -47,7 +47,7 @@ namespace Assets._Game.Scripts.MVVM
             float eclapsedTime = 0.0f;
             while (eclapsedTime < _transitionTime)
             {
-                currentLocalPosition.y = Mathf.Lerp(_canvasRectTransform.rect.height, -_canvasRectTransform.rect.height/2, 
+                currentLocalPosition.y = Mathf.Lerp(_canvasRectTransform.rect.height, -_transitionScreen.rect.yMin, 
                     eclapsedTime/_transitionTime);
                 _transitionScreen.anchoredPosition = currentLocalPosition;
                 eclapsedTime += Time.deltaTime;
@@ -61,7 +61,7 @@ namespace Assets._Game.Scripts.MVVM
             float eclapsedTime = 0.0f;
             while (eclapsedTime < _transitionTime)
             {
-                currentLocalPosition.y = Mathf.Lerp(-_canvasRectTransform.rect.height/2, _canvasRectTransform.rect.height, 
+                currentLocalPosition.y = Mathf.Lerp(-_transitionScreen.rect.yMin, _canvasRectTransform.rect.height, 
                     eclapsedTime/_transitionTime);
                 _transitionScreen.anchoredPosition = currentLocalPosition;
                 eclapsedTime += Time.deltaTime;

@@ -13,20 +13,6 @@ namespace Assets._Game.Scripts.MVVM.Views
         [SerializeField] private Button _exitButton;
         [SerializeField] private Button _settingsButton;
 
-        // [Header("Rotate faces")]
-        // [SerializeField] private Button _rotateNorthIn;
-        // [SerializeField] private Button _rotateNorthOut;
-        // [SerializeField] private Button _rotateSouthIn;
-        // [SerializeField] private Button _rotateSouthOut;
-        // [SerializeField] private Button _rotateEastIn;
-        // [SerializeField] private Button _rotateEastOut;
-        // [SerializeField] private Button _rotateWestIn;
-        // [SerializeField] private Button _rotateWestOut;
-        // [SerializeField] private Button _rotateTopIn;
-        // [SerializeField] private Button _rotateTopOut;
-        // [SerializeField] private Button _rotateBottomIn;
-        // [SerializeField] private Button _rotateBottomOut;
-
         [Header("Move cube")]
         [SerializeField] private Button _moveXPositive;
         [SerializeField] private Button _moveXNegative;
@@ -54,10 +40,6 @@ namespace Assets._Game.Scripts.MVVM.Views
 
             _disposables = new()
             {
-                // viewModel.ExitGameplay.Subscribe((e) => {
-                //     // _decisionPopUp.Close();
-                //     // _gameOverPopUpText.Show(_timeText.text);
-                // }),
                 viewModel.UndoCount.Subscribe(SetUndoCountText),
                 viewModel.IsUndoAvailable.Subscribe(SwitchUndoAvailability),
                 viewModel.RedoCount.Subscribe(SetRedoCountText),
@@ -66,10 +48,7 @@ namespace Assets._Game.Scripts.MVVM.Views
             };
 
             _decisionPopUp.Bind(() => viewModel.OnExitButtonClicked(), 
-                () => { 
-                    // _exitButton.enabled = true;
-                    viewModel.SetExitWindowActive(false);
-                }
+                () => viewModel.SetExitWindowActive(false)
             );
         }
 
@@ -89,20 +68,7 @@ namespace Assets._Game.Scripts.MVVM.Views
         }
 
         private void AddButtonListeners()
-        {
-            // _rotateNorthIn.onClick.AddListener(_viewModel.OnSwipeNorthPositiveButtonClicked);
-            // _rotateNorthOut.onClick.AddListener(_viewModel.OnSwipeNorthNegativeButtonClicked);
-            // _rotateSouthIn.onClick.AddListener(_viewModel.OnSwipeSouthPositiveButtonClicked);
-            // _rotateSouthOut.onClick.AddListener(_viewModel.OnSwipeSouthNegativeButtonClicked);
-            // _rotateEastIn.onClick.AddListener(_viewModel.OnSwipeEastPositiveButtonClicked);
-            // _rotateWestOut.onClick.AddListener(_viewModel.OnSwipeWestNegativeButtonClicked);
-            // _rotateWestIn.onClick.AddListener(_viewModel.OnSwipeWestPositiveButtonClicked);
-            // _rotateEastOut.onClick.AddListener(_viewModel.OnSwipeEastNegativeButtonClicked);
-            // _rotateTopIn.onClick.AddListener(_viewModel.OnSwipeTopPositiveButtonClicked);
-            // _rotateTopOut.onClick.AddListener(_viewModel.OnSwipeTopNegativeButtonClicked);
-            // _rotateBottomIn.onClick.AddListener(_viewModel.OnSwipeBottomNegativeButtonClicked);
-            // _rotateBottomOut.onClick.AddListener(_viewModel.OnSwipeBottomPositiveButtonClicked);
-            
+        {   
             _moveXPositive.onClick.AddListener(_viewModel.OnRotateXPositiveButtonClicked);
             _moveXNegative.onClick.AddListener(_viewModel.OnRotateXNegativeButtonClicked);
             _moveYPositive.onClick.AddListener(_viewModel.OnRotateYPositiveButtonClicked);
@@ -138,7 +104,6 @@ namespace Assets._Game.Scripts.MVVM.Views
 
         private void SetExitWindowActive(bool isActive)
         {
-            //_exitButton.enabled = false;
             if (isActive)
                 _decisionPopUp.Show();
             else
@@ -147,19 +112,6 @@ namespace Assets._Game.Scripts.MVVM.Views
 
         public override void Dispose()
         {
-            // _rotateNorthIn.onClick.RemoveAllListeners();
-            // _rotateNorthOut.onClick.RemoveAllListeners();
-            // _rotateSouthIn.onClick.RemoveAllListeners();
-            // _rotateSouthOut.onClick.RemoveAllListeners();
-            // _rotateEastIn.onClick.RemoveAllListeners();
-            // _rotateEastOut.onClick.RemoveAllListeners();
-            // _rotateWestIn.onClick.RemoveAllListeners();
-            // _rotateWestOut.onClick.RemoveAllListeners();
-            // _rotateTopIn.onClick.RemoveAllListeners();
-            // _rotateTopOut.onClick.RemoveAllListeners();
-            // _rotateBottomIn.onClick.RemoveAllListeners();
-            // _rotateBottomOut.onClick.RemoveAllListeners();
-            
             _moveXPositive.onClick.RemoveAllListeners();
             _moveXNegative.onClick.RemoveAllListeners();
             _moveYPositive.onClick.RemoveAllListeners();
@@ -172,7 +124,7 @@ namespace Assets._Game.Scripts.MVVM.Views
             _undoButton.onClick.RemoveAllListeners();
             _redoButton.onClick.RemoveAllListeners();
 
-            _disposables.Dispose();
+            _disposables?.Dispose();
             _decisionPopUp.Dispose();
         }
     }

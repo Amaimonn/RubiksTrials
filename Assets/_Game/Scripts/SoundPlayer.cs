@@ -19,15 +19,18 @@ namespace Assets._Game.Scripts
         [SerializeField] private float _musicDelay = 2.0f;
         [SerializeField] private float _fadeDuration = 2.5f;
         [SerializeField] private float _soundVolumeScale = 1.0f;
+        private float _currentFadeSoundScale = 1;
+        private float _currentSoundVolume = 1;
 
         public void SetSoundVolume(float volume)
         {
-            _soundSource.volume = volume;
+            _currentSoundVolume = volume;
+            _soundSource.volume = _currentSoundVolume * _currentFadeSoundScale;
         }
 
         public void SetSFXVolume(float volume)
         {
-            _sfxSource.volume = volume;
+            _sfxSource.volume = volume * _currentFadeSoundScale;
         }
 
         public void PlaySwipe()
@@ -89,7 +92,8 @@ namespace Assets._Game.Scripts
             var time = 0f;
             while(time < duration)
             {
-                _soundSource.volume = Mathf.Lerp(fromValue, toValue, time / duration);
+                _currentFadeSoundScale = Mathf.Lerp(fromValue, toValue, time / duration);
+                _soundSource.volume = _currentSoundVolume * _currentFadeSoundScale;
                 time += Time.deltaTime;
                 yield return null;
             }

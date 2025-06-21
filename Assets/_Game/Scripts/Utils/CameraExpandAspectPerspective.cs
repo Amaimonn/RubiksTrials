@@ -33,19 +33,20 @@ public class CameraExpandAspectPerspective : MonoBehaviour
 
     private void UpdateCameraFOV(Vector2 screenSize)
     {
+        if (!(float.IsFinite(screenSize.x) && float.IsFinite(screenSize.y)))
+            return;
         var targetAspect = _targetAspectWidth / _targetAspectHeight;
         var currentAspect = screenSize.x / screenSize.y;
 
-        if (currentAspect > targetAspect) // Широкий экран - регулируем по высоте
+        if (currentAspect > targetAspect)
         {
             _camera.fieldOfView = _baseFieldOfView;
         }
-        else // Узкий экран - регулируем по ширине
+        else
         {
-            // Для перспективной камеры нужно учитывать тангенсы углов
-            float tanFOV = Mathf.Tan(_baseFieldOfView * 0.5f * Mathf.Deg2Rad);
-            float targetTanFOV = tanFOV * (targetAspect / currentAspect);
-            float targetFOV = 2f * Mathf.Atan(targetTanFOV) * Mathf.Rad2Deg;
+            var tanFOV = Mathf.Tan(_baseFieldOfView * 0.5f * Mathf.Deg2Rad);
+            var targetTanFOV = tanFOV * (targetAspect / currentAspect);
+            var targetFOV = 2f * Mathf.Atan(targetTanFOV) * Mathf.Rad2Deg;
             
             _camera.fieldOfView = Mathf.Clamp(targetFOV, _minFieldOfView, _maxFieldOfView);
         }

@@ -129,7 +129,7 @@ MonoBehaviour:
   _canvasGroup: {fileID: 7965849839745974063}
   _groupAnimationTime: 0.5
   _transitionScreen: {fileID: 4958953036752348397}
-  _transitionTime: 1
+  _transitionTime: 0.7
   _loadingScreen: {fileID: 3090206920952665339}
   _uiSceneContainer: {fileID: 570414125377388367}
 --- !u!1 &1503598427379783494
@@ -142,7 +142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4958953036752348397}
   - component: {fileID: 2235563586625782141}
-  - component: {fileID: 3536777496327855993}
+  - component: {fileID: 5355097747664499886}
   m_Layer: 0
   m_Name: TransitionImage
   m_TagString: Untagged
@@ -166,8 +166,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 480}
+  m_AnchoredPosition: {x: 0, y: -10}
+  m_SizeDelta: {x: 40, y: 490}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &2235563586625782141
 CanvasRenderer:
@@ -177,7 +177,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503598427379783494}
   m_CullTransparentMesh: 1
---- !u!114 &3536777496327855993
+--- !u!114 &5355097747664499886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,24 +186,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1503598427379783494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.09586244, g: 0.11065615, b: 0.23270428, a: 1}
+  m_Color: {r: 0.09411765, g: 0.10980392, b: 0.23137255, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &3090206920952665339
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8468112396761583876}
   - component: {fileID: 5665323633535366078}
-  - component: {fileID: 27677460702004421}
+  - component: {fileID: 4744274994926820237}
   m_Layer: 5
   m_Name: Loading
   m_TagString: Untagged
@@ -241,7 +244,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5665323633535366078
 CanvasRenderer:
@@ -251,7 +254,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3090206920952665339}
   m_CullTransparentMesh: 1
---- !u!114 &27677460702004421
+--- !u!114 &4744274994926820237
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -260,24 +263,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 3090206920952665339}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.09586244, g: 0.11065615, b: 0.23270428, a: 1}
+  m_Color: {r: 0.09411765, g: 0.10980392, b: 0.23137255, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &3461317858908646327
 GameObject:
   m_ObjectHideFlags: 0
